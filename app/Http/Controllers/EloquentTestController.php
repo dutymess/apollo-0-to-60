@@ -8,15 +8,15 @@ class EloquentTestController extends Controller
 {
     public function index()
     {
-        return $this->deleteARecord(5);
+        return $this->destroyARecord(5);
     }
 
-    public function destroyARecord($id)
+    private function destroyARecord($id)
     {
         return Mission::destroy($id);
     }
 
-    public function deleteARecord($id)
+    private function deleteARecord($id)
     {
         $mission = Mission::find($id);
         return $mission->delete();
@@ -24,30 +24,31 @@ class EloquentTestController extends Controller
         return 'Deleted';
     }
 
-    public function editARecord($id)
+    private function editARecord($id)
     {
         $mission = Mission::find($id);
-        $mission->title .= ' - Edited!' ;
+        $mission->title .= ' - Edited!';
         $mission->save();
 
         return "Done!";
     }
-    public function viewOneRecord($id)
+
+    private function viewOneRecord($id)
     {
         return Mission::find($id);
     }
 
-    public function viewAllRecords()
+    private function viewAllRecords()
     {
         return Mission::all();
     }
 
-    public function countAllRecords()
+    private function countAllRecords()
     {
         return Mission::count();
     }
 
-    public function createOneRecordAndReturnId()
+    private function createOneRecordAndReturnId()
     {
         $mission = new Mission();
         $mission->code = '5678';
@@ -63,7 +64,7 @@ class EloquentTestController extends Controller
     }
 
 
-    public function createOneRecord()
+    private function createOneRecord()
     {
         $mission = new Mission();
         $mission->code = '5678';
