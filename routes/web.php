@@ -11,6 +11,11 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', 'EloquentTestController@index');
+Route::get('/practice-04-02', 'Practices\CreateAndDeleteRandomRecordsController@index');
+
