@@ -8,7 +8,26 @@ class EloquentTestController extends Controller
 {
     public function index()
     {
-        return $this->destroyARecord(5);
+        return $this->massUpdate();
+    }
+
+    private function massUpdate()
+    {
+        $saved_record = Mission::find(112)->update([
+            "code" => "1234" ,
+        ]);
+
+        return strval($saved_record);
+    }
+    private function massCreate()
+    {
+        $saved_record = Mission::create([
+            "code" => "1234",
+            "title" => "Mass Mission Test",
+            "operator" => "Mass Operator Test",
+        ]);
+
+        return $saved_record->id;
     }
 
     private function destroyARecord($id)
